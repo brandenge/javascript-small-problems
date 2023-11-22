@@ -54,4 +54,27 @@ logInBox('');
 
 const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-logInBox(lorem, 100);
+logInBox(lorem, 75);
+
+/*
++---------------------------------------------+
+|                                             |
+|  To boldly go where no one has gone before. |
+|                                             |
++---------------------------------------------+
++---+
+|   |
+|   |
+|   |
++---+
++-----------------------------------------------------------------------------+
+|                                                                             |
+|  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod    |
+|  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis |
+|  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis |
+|  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu      |
+|  nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in    |
+|  qui officia deserunt mollit anim id est laborum.                           |
+|                                                                             |
++-----------------------------------------------------------------------------+
+*/
