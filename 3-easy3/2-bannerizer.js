@@ -15,25 +15,36 @@ function logInBox(message, maxLength) {
 }
 
 function alignText(message, length) {
-  if (message.length > length) { return message.slice(0, length); }
+  if (message.length > length) {
+    return message.slice(0, length);
+  }
   message = message.padEnd(length, ' ');
   return message;
 }
 
-function wordWrap(message, maxLength=Infinity, br='\n') {
+function wordWrap(message, maxLength = Infinity) {
   const words = message.split(' ');
+  const lines = wordsToLines(words, maxLength);
+  return lines;
+}
+
+function wordsToLines(words, maxLength = Infinity) {
   const lines = [];
-  let line = ''
+  let line = '';
   for (let word of words) {
     if (line.length + word.length < maxLength) {
       line = line + ' ' + word;
     } else {
-      if (maxLength < Infinity) { line = line.padEnd(maxLength, ' '); }
+      if (maxLength < Infinity) {
+        line = line.padEnd(maxLength, ' ');
+      }
       lines.push(line);
       line = '';
     }
   }
-  if (maxLength < Infinity) { line = line.padEnd(maxLength, ' '); }
+  if (maxLength < Infinity) {
+    line = line.padEnd(maxLength, ' ');
+  }
   lines.push(line);
   return lines;
 }
@@ -41,6 +52,6 @@ function wordWrap(message, maxLength=Infinity, br='\n') {
 logInBox('To boldly go where no one has gone before.');
 logInBox('');
 
-lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
 logInBox(lorem, 100);

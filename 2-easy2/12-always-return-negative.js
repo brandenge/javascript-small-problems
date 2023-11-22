@@ -1,4 +1,4 @@
-const negative = n => -Math.abs(n);
+const negative = num => -Math.abs(num);
 
 console.log(negative(5));     // -5
 console.log(negative(-3));    // -3

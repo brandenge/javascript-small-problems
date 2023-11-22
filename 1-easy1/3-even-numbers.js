@@ -13,17 +13,17 @@ class EvenNumbers {
             value: current,
             done: false,
           };
-          current += 2
+          current += 2;
           return nextVal;
         } else {
           return { done: true };
         }
       }.bind(this)
-    }
+    };
   }
 }
 
-evenNumbers = new EvenNumbers(1, 99);
-for (n of evenNumbers) {
-  console.log(n);
+const evenNumbers = new EvenNumbers(1, 99);
+for (let num of evenNumbers) {
+  console.log(num);
 }

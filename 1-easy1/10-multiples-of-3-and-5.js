@@ -1,7 +1,7 @@
-function multisum(n) {
-  return [...Array(n)].map((_, i) => i + 1)
-    .filter((n) => n % 3 === 0 || n % 5 === 0)
-    .reduce((sum, n) => sum + n);
+function multisum(num) {
+  return [...Array(num)].map((_, idx) => idx + 1)
+    .filter((num) => num % 3 === 0 || num % 5 === 0)
+    .reduce((sum, num) => sum + num);
 }
 
 console.log(multisum(3));       // 3

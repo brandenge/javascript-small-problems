@@ -1,68 +1,69 @@
 // Helper function used below - leave uncommented
+// Range function wrapper around Array.from
 function range(start, stop, step) {
-  return Array.from({ length: (stop - start) / step + 1 }, (n, i) => start + i * step);
+  return Array.from(
+    { length: ((stop - start) / step) + 1 }, (_, idx) => start + (idx * step)
+  );
 }
 
 // Use a regular for loop
-for (let i = 1; i < 100; i += 2) {
-  console.log(i);
+for (let idx = 1; idx < 100; idx += 2) {
+  console.log(idx);
 }
 
 // Use a for-of loop and .entries method
-for ([i, _] of Array(50).entries()) {
-  console.log(i * 2 + 1);
+for (let [idx] of Array(50).entries()) {
+  console.log((idx * 2) + 1);
 }
 
 // Use a for-in loop with Array() and the spread operator
-for (i in [...Array(50)]) {
-  console.log(i * 2 + 1);
+for (let idx in [...Array(50)]) {
+  console.log((idx * 2) + 1);
 }
 
 // Use Array() to create an array iterator object and then use .keys()
 // Only works with a for-of loop specifically
-for (n of Array(100).keys()) {
-  if (n % 2 == 1) { console.log(n); }
+for (let num of Array(100).keys()) {
+  if (num % 2 === 1) {
+    console.log(num);
+  }
 }
 
 // Create an array iterator object and then using .fill and .map
-for (n of Array(50).fill(0).map((n, i) => i * 2 + 1)) {
-  console.log(n);
+for (let num of Array(50).fill(0).map((_, idx) => (idx * 2) + 1)) {
+  console.log(num);
 }
 
 // Use Array.from with an array
-arr = [...Array(50)]
-for (n of Array.from(arr, (n, i) => i * 2 + 1)) {
-  console.log(n);
+let arr = [...Array(50)];
+for (let num of Array.from(arr, (_, idx) => (idx * 2) + 1)) {
+  console.log(num);
 }
 
 // Use Array.from using the length property on an object
 // Creates an array iterator
-for (n of Array.from({ length: 50 }, (n, i) => i * 2 + 1)) {
-  console.log(n);
+for (let num of Array.from({ length: 50 }, (_, idx) => (idx * 2) + 1)) {
+  console.log(num);
 }
 
-// Use a range function wrapper around Array.from
-function range(start, stop, step) {
-  return Array.from({ length: (stop - start) / step + 1 }, (n, i) => start + i * step);
-}
-for (n of range(1, 99, 2)) {
-  console.log(n);
+for (let num of range(1, 99, 2)) {
+  console.log(num);
 }
 
 // Use a generator function
-function* range(start, stop, step) {
+function* range1(start, stop, step) {
   while (start <= stop) {
     yield start;
     start += step;
   }
 }
 
-for (n of range(1, 99 , 2)) {
-  console.log(n);
+for (let num of range1(1, 99 , 2)) {
+  console.log(num);
 }
 
 // Use the yield* operator to delegate to another generator
-function* range(start, stop, step) {
+function* range2(start, stop, step) {
   while (start <= stop) {
     yield start;
     start += step;
@@ -70,11 +71,11 @@ function* range(start, stop, step) {
 }
 
 function* otherGenerator() {
-  yield* range(1, 99, 2);
+  yield* range2(1, 99, 2);
 }
 
-for (n of otherGenerator()) {
-  console.log(n);
+for (let num of otherGenerator()) {
+  console.log(num);
 }
 
 // Create an iterator object that maintains its state and has a next method
@@ -86,25 +87,25 @@ const iterator = {
       return {
         value: this.data[this.currentIndex++],
         done: false
-      }
+      };
     } else {
       return { done: true };
     }
   }
-}
+};
 
 // Iteration loop example #1
-nextItem = iterator.next()
+let nextItem = iterator.next();
 while (!nextItem.done) {
-  console.log(nextItem.value)
-  nextItem = iterator.next()
+  console.log(nextItem.value);
+  nextItem = iterator.next();
 }
 
 // Iteration loop example #2
 while (true) {
   const { value, done } = iterator.next();
   if (done) break;
-  console.log(value)
+  console.log(value);
 }
 
 // Create the same iterator object as a class
@@ -125,12 +126,12 @@ class Iterator {
     }
   }
   logger() {
-    console.log(this.next().value)
+    console.log(this.next().value);
   }
 }
 
 arr = range(1, 99, 2);
-iter = new Iterator(arr);
+const iter = new Iterator(arr);
 iter.logger();
 
 // Create an iterable with [Symbol.iterator] defined so that
@@ -138,7 +139,7 @@ iter.logger();
 const iterable = {
   items: range(1, 99, 2),
   [Symbol.iterator]: function() {
-    let currentIndex = 0
+    let currentIndex = 0;
     return {
       next: function() {
         if (currentIndex < this.items.length) {
@@ -147,15 +148,15 @@ const iterable = {
           return { done: true };
         }
       }.bind(this)
-    }
+    };
   }
-}
+};
 
 for (let val of iterable) {
-  console.log(val)
+  console.log(val);
 }
 
-console.log([...iterable])
+console.log([...iterable]);
 
 // Create the iterable as a class
 class Iterable1 {
@@ -173,17 +174,17 @@ class Iterable1 {
           return { done: true };
         }
       }.bind(this)
-    }
+    };
   }
 }
 
-let iterable1 = new Iterable1(range(1, 99, 2))
+const iterable1 = new Iterable1(range(1, 99, 2));
 
 for (let val of iterable1) {
-  console.log(val)
+  console.log(val);
 }
 
-console.log([...iterable1])
+console.log([...iterable1]);
 
 // Create the iterable as a class using an instance variable to track the index
 class Iterable2 {
@@ -194,7 +195,9 @@ class Iterable2 {
 
   [Symbol.iterator]() {
     // The fix
-    if (this.currentIndex === this.items.length) { this.currentIndex = 0; }
+    if (this.currentIndex === this.items.length) {
+      this.currentIndex = 0;
+    }
     return {
       next: function() {
         if (this.currentIndex < this.items.length) {
@@ -203,14 +206,14 @@ class Iterable2 {
           return { done: true };
         }
       }.bind(this)
-    }
+    };
   }
 }
 
-let iterable2 = new Iterable2(range(1, 99, 2))
+let iterable2 = new Iterable2(range(1, 99, 2));
 
 for (let val of iterable2) {
-  console.log(val)
+  console.log(val);
 }
 
-console.log([...iterable2])
+console.log([...iterable2]);

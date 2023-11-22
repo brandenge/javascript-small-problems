@@ -1,5 +1,6 @@
 function shortLongShort(string1, string2) {
-  const [shorter, longer] = [string1, string2].sort((a, b) => a.length - b.length);
+  const [shorter, longer] =
+    [string1, string2].sort((a, b) => a.length - b.length);
   return shorter + longer + shorter;
 }
 

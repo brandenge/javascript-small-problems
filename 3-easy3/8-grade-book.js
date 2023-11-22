@@ -1,5 +1,5 @@
 function getGrade(...scores) {
-  const mean = scores.reduce((sum, n) => sum + n) / scores.length;
+  const mean = scores.reduce((sum, num) => sum + num) / scores.length;
   switch (true) {
     case mean >= 90: return 'A';
     case mean >= 80: return 'B';

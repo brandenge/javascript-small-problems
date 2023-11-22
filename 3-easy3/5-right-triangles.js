@@ -1,6 +1,6 @@
-function triangle(n) {
-  for (let i = 0; i <= n; i++) {
-    console.log(' '.repeat(n - i) + '*'.repeat(i));
+function triangle(num) {
+  for (let idx = 0; idx <= num; idx++) {
+    console.log(' '.repeat(num - idx) + '*'.repeat(idx));
   }
 }
 

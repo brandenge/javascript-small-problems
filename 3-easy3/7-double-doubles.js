@@ -1,10 +1,10 @@
-function twice(n) {
-  const numString = n.toString();
+function twice(num) {
+  const numString = num.toString();
   const mid = Math.floor(numString.length / 2);
-  if (numString.slice(0, mid) == numString.slice(mid, numString.length)) {
-    return n;
+  if (numString.slice(0, mid) === numString.slice(mid, numString.length)) {
+    return num;
   } else {
-    return n * 2;
+    return num * 2;
   }
 }
 

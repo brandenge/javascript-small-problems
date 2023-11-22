@@ -1,6 +1,6 @@
 const input = require('readline-sync');
-const currentAge = parseInt(input.question('What is your age? '));
-const retirementAge = parseInt(input.question('At what age would you like to retire? '));
+const currentAge = parseInt(input.question('What is your age? '), 10);
+const retirementAge = parseInt(input.question('At what age would you like to retire? '), 10);
 const currentYear = new Date().getFullYear();
 const workYears = retirementAge - currentAge;
 const retirementYear = currentYear + workYears;

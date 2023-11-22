@@ -1,4 +1,4 @@
-const stringy = n => '10'.repeat(Math.ceil(n / 2)).slice(0, n);
+const stringy = num => '10'.repeat(Math.ceil(num / 2)).slice(0, num);
 
 console.log(stringy(6));    // "101010"
 console.log(stringy(9));    // "101010101"
