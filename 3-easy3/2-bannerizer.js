@@ -15,36 +15,25 @@ function logInBox(message, maxLength) {
 }
 
 function alignText(message, length) {
-  if (message.length > length) {
-    return message.slice(0, length);
-  }
+  if (message.length > length) return message.slice(0, length);
   message = message.padEnd(length, ' ');
   return message;
 }
 
 function wordWrap(message, maxLength = Infinity) {
   const words = message.split(' ');
-  const lines = wordsToLines(words, maxLength);
-  return lines;
-}
-
-function wordsToLines(words, maxLength = Infinity) {
   const lines = [];
   let line = '';
   for (let word of words) {
     if (line.length + word.length < maxLength) {
       line = line + ' ' + word;
     } else {
-      if (maxLength < Infinity) {
-        line = line.padEnd(maxLength, ' ');
-      }
+      if (maxLength < Infinity) line = line.padEnd(maxLength, ' ');
       lines.push(line);
       line = '';
     }
   }
-  if (maxLength < Infinity) {
-    line = line.padEnd(maxLength, ' ');
-  }
+  if (maxLength < Infinity) line = line.padEnd(maxLength, ' ');
   lines.push(line);
   return lines;
 }

@@ -5,11 +5,8 @@ function centerOf1(string) {
 
 function centerOf2(string) {
   const mid = parseInt(string.length / 2, 10);
-  if (string.length % 2 === 1) {
-    return string[mid];
-  } else {
-    return string.substring(mid - 1, mid + 1);
-  }
+  if (string.length % 2 === 1) return string[mid];
+  return string.substring(mid - 1, mid + 1);
 }
 
 function centerOf3(string) {
